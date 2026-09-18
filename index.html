@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>توسعه‌دهنده وب مستقل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #11161C;
+    --panel: #1A2129;
+    --panel-line: #2A333D;
+    --gold: #E3A542;
+    --teal: #4A9A91;
+    --text: #F2ECE1;
+    --muted: #9AA5AC;
+  }
+  :root:not([data-theme="light"]){
+    --bg: #11161C;
+    --panel: #1A2129;
+    --panel-line: #2A333D;
+    --gold: #E3A542;
+    --teal: #4A9A91;
+    --text: #F2ECE1;
+    --muted: #9AA5AC;
+  }
+  :root[data-theme="dark"]{
+    --bg: #11161C;
+    --panel: #1A2129;
+    --panel-line: #2A333D;
+    --gold: #E3A542;
+    --teal: #4A9A91;
+    --text: #F2ECE1;
+    --muted: #9AA5AC;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.9;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection{ background: var(--gold); color: #11161C; }
+
+  a{ color: inherit; }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--panel-line);
+  }
+  .hero .kicker{
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(32px, 6vw, 50px);
+    font-weight: 800;
+    line-height: 1.5;
+    max-width: 15ch;
+  }
+  .hero p{
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 46ch;
+    font-weight: 300;
+  }
+  .hero .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 10px 18px;
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .hero .badge .dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  /* ---------- SECTION HEADINGS ---------- */
+  section{ padding: 72px 0; border-bottom: 1px solid var(--panel-line); }
+  section:last-of-type{ border-bottom: none; }
+  h2{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  /* ---------- JOURNEY (timeline — genuinely chronological) ---------- */
+  .timeline{
+    position: relative;
+    padding-right: 28px;
+    border-right: 2px solid var(--panel-line);
+  }
+  .tl-item{
+    position: relative;
+    padding-bottom: 36px;
+  }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content: '';
+    position: absolute;
+    right: -34px;
+    top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--bg);
+  }
+  .tl-item h3{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .tl-item p{
+    color: var(--muted);
+    font-size: 15.5px;
+    font-weight: 300;
+    max-width: 52ch;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .project:last-child{ margin-bottom: 0; }
+  .project .name-row{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .project h3{
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .project .role{
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .project p{
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 12px;
+    font-size: 15.5px;
+    max-width: 58ch;
+  }
+  .tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .tags span{
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--panel-line);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .skills span{
+    font-size: 14.5px;
+    padding: 9px 16px;
+    border: 1px solid var(--panel-line);
+    border-radius: 10px;
+    color: var(--text);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .contact-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--panel-line);
+    text-decoration: none;
+    transition: padding-right 0.15s ease;
+  }
+  .contact-row:last-child{ border-bottom: none; }
+  .contact-row:hover{ padding-right: 10px; }
+  .contact-row .label{
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .contact-row .value{
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  footer{
+    padding: 40px 0 60px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13.5px;
+    font-weight: 300;
+  }
+
+  @media (max-width: 520px){
+    .hero{ padding: 64px 0 48px; }
+    section{ padding: 52px 0; }
+    .project{ padding: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .contact-row{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="kicker">توسعه‌دهنده وب مستقل</div>
+      <h1>اپ و وب‌سایت می‌سازم، از ایده تا انتشار</h1>
+      <p>
+        طراحی و توسعه اپ‌های فارسی برای کسب‌وکارهای کوچک — فروشگاه آنلاین، ابزارهای هوشمند،
+        و سیستم‌های مدیریت سفارش و موجودی. سریع، تمیز، و متناسب با نیاز واقعی کسب‌وکارت.
+      </p>
+      <div class="badge">
+        <span class="dot"></span>
+        در دسترس برای پروژه‌های جدید
+      </div>
+    </section>
+
+    <section>
+      <h2>روش کار</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <h3>شنیدن نیاز واقعی</h3>
+          <p>قبل از هر خطی کد، دقیقاً می‌فهمم کسب‌وکارت به چه چیزی نیاز داره — نه یه راه‌حل عمومی، یه ابزار متناسب با کارت.</p>
+        </div>
+        <div class="tl-item">
+          <h3>طراحی و توسعه سریع</h3>
+          <p>ساخت نسخه اولیه در کوتاه‌ترین زمان ممکن، تا سریع ببینی محصول چطور کار می‌کنه.</p>
+        </div>
+        <div class="tl-item">
+          <h3>تست و اصلاح</h3>
+          <p>بررسی دقیق روی گوشی و مرورگرهای مختلف، رفع مشکلات امنیتی و اجرایی قبل از تحویل نهایی.</p>
+        </div>
+        <div class="tl-item">
+          <h3>تحویل و پشتیبانی</h3>
+          <p>انتشار نهایی و آمادگی برای رفع اشکال یا افزودن قابلیت جدید بعد از تحویل.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>نمونه‌کارها</h2>
+
+      <div class="project">
+        <div class="name-row">
+          <h3>طلوع کالا</h3>
+          <span class="role">فروشگاه آنلاین</span>
+        </div>
+        <p>
+          فروشگاه اینترنتی فارسی با طراحی اختصاصی، پشتیبانی کامل راست‌به‌چپ، حالت شب،
+          و رفع مشکلات امنیتی در تمام نقاط ورودی داده.
+        </p>
+        <div class="tags">
+          <span>GitHub Pages</span>
+          <span>Supabase</span>
+          <span>RTL / تایپوگرافی فارسی</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="name-row">
+          <h3>آزمایشگاه هوش مصنوعی</h3>
+          <span class="role">دستیار چندوجهی</span>
+        </div>
+        <p>
+          ابزاری که عکس، صدا و متن رو با هم می‌گیره، برای تحلیل به هوش مصنوعی می‌فرسته و پاسخ رو هم
+          به‌صورت نوشتاری هم صوتی برمی‌گردونه — با معماری امن که کلید API هیچ‌وقت توی مرورگر قرار نمی‌گیره.
+        </p>
+        <div class="tags">
+          <span>هوش مصنوعی چندوجهی</span>
+          <span>Supabase Edge Functions</span>
+          <span>تبدیل متن به گفتار</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="name-row">
+          <h3>فیکس‌کانکت</h3>
+          <span class="role">پلتفرم اتصال به متخصص</span>
+        </div>
+        <p>
+          پلتفرمی که مشتری رو با متخصص تعمیرات لوازم خانگی مناسب وصل می‌کنه — تشخیص مشکل با عکس
+          از طریق هوش مصنوعی، تطبیق خودکار با نزدیک‌ترین متخصص در دسترس، و چت آنی بین دو طرف.
+        </p>
+        <div class="tags">
+          <span>سه پنل مستقل (مشتری، متخصص، مدیر)</span>
+          <span>موتور تطبیق هوشمند</span>
+          <span>ورود با تلگرام</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="name-row">
+          <h3>دفتر خرید مغازه</h3>
+          <span class="role">اپلیکیشن وب پیشرو (PWA)</span>
+        </div>
+        <p>
+          ابزاری برای ثبت و جست‌وجوی فاکتورهای خرید فقط با گرفتن عکس — استخراج خودکار اطلاعات از
+          روی تصویر فاکتور و دسته‌بندی هوشمند اقلام.
+        </p>
+        <div class="tags">
+          <span>PWA</span>
+          <span>OCR</span>
+          <span>Supabase</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>مهارت‌ها</h2>
+      <div class="skills">
+        <span>HTML / CSS / JavaScript</span>
+        <span>PWA</span>
+        <span>Supabase (پایگاه‌داده و Edge Functions)</span>
+        <span>GitHub Pages</span>
+        <span>طراحی راست‌به‌چپ فارسی</span>
+        <span>اتصال به API‌های هوش مصنوعی</span>
+        <span>OCR و پردازش تصویر</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>راه ارتباطی</h2>
+      <div class="contact-list">
+        <a class="contact-row" href="https://t.me/shar_ifi190" target="_blank" rel="noopener">
+          <span class="label">تلگرام</span>
+          <span class="value">shar_ifi190@</span>
+        </a>
+        <a class="contact-row" href="https://instagram.com/sharifi190_" target="_blank" rel="noopener">
+          <span class="label">اینستاگرام</span>
+          <span class="value">sharifi190_@</span>
+        </a>
+        <a class="contact-row" href="https://wa.me/989927544654" target="_blank" rel="noopener">
+          <span class="label">واتساپ</span>
+          <span class="value" dir="ltr" style="display:inline-block">09927544654</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © تمام حقوق محفوظ است
+    </footer>
+
+  </div>
+
+</body>
+</html>
